@@ -6,5 +6,7 @@ public enum RoleType {
     FILIAL_MANAGER,     // Filiallar uchun masul bo'lgan manager
     NUMBERS_MANAGER,    // Mobil kartalar uchun manager
     STAFF_MANAGER,      // Xodimlar bilan ishlovchi manager
+    ENTERTAINMENT_MANAGER,
+    WORKER,
 
 }

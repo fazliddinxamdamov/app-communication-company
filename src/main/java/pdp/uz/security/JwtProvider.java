@@ -21,7 +21,7 @@ public class JwtProvider {
                 .setSubject(username)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expireDate))
-                .claim("roles", role.getName())
+                .claim("roles", role.getRoleType())
                 .signWith(SignatureAlgorithm.HS512, key)
                 .compact();
         return token;

@@ -4,16 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pdp.uz.enums.TariffType;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Filial {
+public class Entertainment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,13 +21,9 @@ public class Filial {
 
     private String name;
 
-    @Column(nullable = false , unique = true)
-    private String address;
+    private Double amount;
 
-    @JoinColumn(nullable = false)
-    @ManyToOne
-    private Staff filialBoss;
+    @Enumerated(value = EnumType.STRING)
+    private TariffType type;
 
-    @OneToMany(cascade = CascadeType.ALL , mappedBy = "filial")
-    private List<Staff> filialStaffs;
 }

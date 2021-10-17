@@ -6,28 +6,33 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.time.LocalDate;
 
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Filial {
+@Entity
+public class SimCard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @OneToOne
+    private Number number;
 
-    @Column(nullable = false , unique = true)
-    private String address;
-
-    @JoinColumn(nullable = false)
     @ManyToOne
-    private Staff filialBoss;
+    private Client client;
 
-    @OneToMany(cascade = CascadeType.ALL , mappedBy = "filial")
-    private List<Staff> filialStaffs;
+    @ManyToOne
+    private Filial filial;
+
+    private Double balance;
+
+    private Double price;
+
+    private LocalDate createdAt = LocalDate.now();
+
+    private Boolean status = true;
 }

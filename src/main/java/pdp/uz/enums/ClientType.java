@@ -2,7 +2,7 @@ package pdp.uz.enums;
 
 public enum ClientType {
 
-    PHYSICAL,
-    LEGAL
+    PHYSICAL_PERSON,
+    LEGAL_PERSON
 
 }

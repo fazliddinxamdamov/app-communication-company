@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import pdp.uz.repo.RoleRepo;
-import pdp.uz.repo.StaffRepo;
+import pdp.uz.repository.RoleRepo;
+import pdp.uz.repository.StaffRepo;
 
 @Component
 @RequiredArgsConstructor

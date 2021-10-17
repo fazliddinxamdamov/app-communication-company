@@ -7,7 +7,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import pdp.uz.repo.RoleRepo;
+import pdp.uz.repository.ClientRepo;
+import pdp.uz.repository.RoleRepo;
+import pdp.uz.repository.StaffRepo;
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +21,10 @@ public class AuthService implements UserDetailsService {
     RoleRepo roleRepo;
     @Autowired
     PasswordEncoder passwordEncoder;
+    @Autowired
+    StaffRepo staffRepo;
+    @Autowired
+    ClientRepo clientRepo;
 
 //    public ApiResponse registerUser(RegisterDto registerDto) {
 //        if (!registerDto.getPassword().equals(registerDto.getPrePassword()))

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pdp.uz.enums.RoleType;
+import pdp.uz.enums.CategoryServiceEnum;
 
 import javax.persistence.*;
 
@@ -12,14 +12,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity(name = "roles")
-public class Role {
+@Entity
+public class CategoryService {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private RoleType roleType;
+    @Enumerated(value = EnumType.STRING)
+    private CategoryServiceEnum name;
 }

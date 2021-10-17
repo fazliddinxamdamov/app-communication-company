@@ -4,30 +4,28 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pdp.uz.enums.TariffType;
 
 import javax.persistence.*;
-import java.util.List;
+import java.time.LocalDate;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Filial {
+public class EntertainmentRate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-
-    @Column(nullable = false , unique = true)
-    private String address;
-
-    @JoinColumn(nullable = false)
     @ManyToOne
-    private Staff filialBoss;
+    private Entertainment entertainment;
 
-    @OneToMany(cascade = CascadeType.ALL , mappedBy = "filial")
-    private List<Staff> filialStaffs;
+    private LocalDate date = LocalDate.now();
+
+    @ManyToOne
+    private Client client;
+
 }

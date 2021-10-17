@@ -7,7 +7,7 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import pdp.uz.enums.PermissionEnum;
+import pdp.uz.enums.RoleType;
 import pdp.uz.template.AbsMain;
 
 import javax.persistence.*;
@@ -21,52 +21,23 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity(name = "staff")
-public class Staff extends AbsMain implements UserDetails {
+public class Staff extends AbsMain{
 
     @Column(nullable = false)
     private String fullName;
 
-    @Column(nullable = false , unique = true)
+    @Column(nullable = false, unique = true)
     private String address;
 
-    @Column(nullable = false , unique = true)
+    @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false , unique = true)
+    @Column(nullable = false, unique = true)
     private String password;
 
-    private boolean enabled;
-
-    @JoinColumn(nullable = false)
-    @OneToOne
-    private Role role;
+    @ManyToMany
+    private Set<Role> roles = new HashSet<>();
 
     @ManyToOne
     private Filial filial;
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<PermissionEnum> permissionList = this.role.getPermissionList();
-
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for (PermissionEnum permission : permissionList) {
-            grantedAuthorities.add(new SimpleGrantedAuthority(permission.name()));
-        }
-        return grantedAuthorities;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
 }
